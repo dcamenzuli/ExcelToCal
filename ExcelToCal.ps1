@@ -41,18 +41,18 @@ $listCount = $SourceCSV.count
 #The part after $SourceCSV[$i] is the title of the column you wish to grab the values from
 for($i = 0; $i -lt $listCount; ++$i)
 {
-$CalItem = $Outlook.CreateItem(1)
-$CalItem.Subject = $SourceCSV[$i].subject
-$CalItem.start = $SourceCSV[$i].start
-$CalItem.end = $SourceCSV[$i].end
-$CalItem.AllDayEvent = $True
-# $CalItem.Body = $SourceCSV[$i].body
-# $CalItem.Location = $SourceCSV[$i].location
-# $CalItem.Importance = $SourceCSV[$i].importance
-# $CalItem.BusyStatus = $SourceCSV[$i].busyStatus
-# $CalItem.EnableReminder = $SourceCSV[$i].enableReminder
-# $CalItem.MeetingStart = $SourceCSV[$i].meetingStart
-# $CalItem.MeetingDuration = $SourceCSV[$i].meetingDuration
-# $CalItem.Reminder = $SourceCSV[$i].reminder
-$a = $CalItem.save()
+	$CalItem = $Outlook.CreateItem(1)
+	$CalItem.Subject = $SourceCSV[$i].subject
+	$CalItem.start = $SourceCSV[$i].start
+	$CalItem.end = $SourceCSV[$i].end
+	$CalItem.AllDayEvent = $True
+	# $CalItem.Body = $SourceCSV[$i].body
+	# $CalItem.Location = $SourceCSV[$i].location
+	# $CalItem.Importance = $SourceCSV[$i].importance
+	# $CalItem.BusyStatus = $SourceCSV[$i].busyStatus
+	# $CalItem.EnableReminder = $SourceCSV[$i].enableReminder
+	# $CalItem.MeetingStart = $SourceCSV[$i].meetingStart
+	# $CalItem.MeetingDuration = $SourceCSV[$i].meetingDuration
+	# $CalItem.Reminder = $SourceCSV[$i].reminder
+	$a = $CalItem.save()
 }
