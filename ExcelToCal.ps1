@@ -70,7 +70,6 @@ for($i = 0; $i -lt $listCount; ++$i)
 		if($b.Subject -eq $CalItem.Subject -and $b.Start -eq $CalItem.Start)
 		{
 			++$checkInt
-		} else {
 		}
 	}
 	if($checkInt -eq 0)
