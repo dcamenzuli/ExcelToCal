@@ -77,7 +77,5 @@ for($i = 0; $i -lt $listCount; ++$i)
 		$a = $CalItem.save()
 	}
 }
-$Outlook.quit()
-[System.Runtime.Interopservices.Marshal]::ReleaseComObject($Outlook)
 
 # End Import to Cal
