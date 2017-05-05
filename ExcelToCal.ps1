@@ -24,6 +24,7 @@ $excel.quit()
 
 # End Create CSV
 
+
 # Import to Cal
 
 # Create Outlook object
@@ -45,22 +46,37 @@ $SourceCSV = Import-CSV "[CSVLocation\Name.csv]"
 $listCount = $SourceCSV.Count
 
 # Create an array from the CSV, iterate through it adding each line item to the Calendar 
-#The part after $SourceCSV[$i] is the title of the column you wish to grab the values from
+# The part after $SourceCSV[$i] is the title of the column you wish to grab the values from
 for($i = 0; $i -lt $listCount; ++$i)
 {
 	$CalItem = $OutlookCalendar.Items.Add(1)
 	$CalItem.Subject = $SourceCSV[$i].subject
 	$CalItem.start = $SourceCSV[$i].start
-	# $CalItem.end = $SourceCSV[$i].end
 	$CalItem.AllDayEvent = $True
+	$CalItem.ReminderSet = $False
+	# $CalItem.end = $SourceCSV[$i].end
 	# $CalItem.Body = $SourceCSV[$i].body
 	# $CalItem.Location = $SourceCSV[$i].location
 	# $CalItem.Importance = $SourceCSV[$i].importance
 	# $CalItem.BusyStatus = $SourceCSV[$i].busyStatus
-	# $CalItem.EnableReminder = $SourceCSV[$i].enableReminder
 	# $CalItem.MeetingStart = $SourceCSV[$i].meetingStart
 	# $CalItem.MeetingDuration = $SourceCSV[$i].meetingDuration
 	# $CalItem.Reminder = $SourceCSV[$i].reminder
-	$a = $CalItem.save()
+	
+	# Check if entry exists before adding new entry
+	$checkInt = 0
+	foreach($b in $OutlookCalendar.items)
+	{
+		if($b.Subject -eq $CalItem.Subject -and $b.Start -eq $CalItem.Start)
+		{
+			++$checkInt
+		} else {
+		}
+	}
+	if($checkInt -eq 0)
+	{
+		$a = $CalItem.save()
+	}
 }
 
+# End Import to Cal
